@@ -33,8 +33,9 @@ class _MainHistoryState extends State<MainHistory> {
     black: Colors.black,
     accent: Colors.purple.shade900,
         backButton: false,
-        onDateChanged: (date) {
-        },
+
+        onDateChanged: (date) {},
+
         lastDate: DateTime.now(),
         events: List.generate(
             100,
@@ -46,7 +47,6 @@ class _MainHistoryState extends State<MainHistory> {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Text("Selected Date: ${selectedDate.toString()}"),
-         
         ],
       )),
       bottomNavigationBar: BottomBar(pageName: "history"),
