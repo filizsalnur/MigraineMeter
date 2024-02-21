@@ -13,6 +13,7 @@ dependencies:
   table_calendar: ^3.0.8
   flutter_secure_storage: ^9.0.0
   shared_preferences: ^2.2.2
+  quickalert: ^1.0.2
 
 dev_dependencies:
   flutter_test:
