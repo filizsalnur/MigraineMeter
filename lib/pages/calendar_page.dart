@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:migraine_meter/components/bottomAppBar.dart';
 import 'package:table_calendar/table_calendar.dart';
+import '../services/data.dart';
 import "./newEvent1.dart";
 import '../models/model.dart';
 
@@ -73,6 +74,50 @@ class CalendarPageState extends State<CalendarPage> {
     return formattedDate;
   }
 
+  String formatDateTr(DateTime? date) {
+    if (date == null) {
+      return '';
+    }
+
+    List<String> aylar = [
+      '',
+      'Ocak',
+      'Şubat',
+      'Mart',
+      'Nisan',
+      'Mayıs',
+      'Haziran',
+      'Temmuz',
+      'Ağustos',
+      'Eylül',
+      'Ekim',
+      'Kasım',
+      'Aralık'
+    ];
+
+    List<String> ekler = [
+      'inci',
+      'inci',
+      'üncü',
+      'üncü',
+      'inci',
+      'inci',
+      'inci',
+      'inci',
+      'inci',
+      'inci'
+    ];
+
+    int gun = date.day;
+    int ay = date.month;
+    int yil = date.year;
+    String ek = ekler[gun % 10];
+
+    String formatliTarih = "$gun ${aylar[ay]} $yil";
+
+    return formatliTarih;
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -87,7 +132,7 @@ class CalendarPageState extends State<CalendarPage> {
             automaticallyImplyLeading: false,
             backgroundColor: Colors.white,
             title: Text(
-              formatDate(selectedDate),
+              formatDateTr(selectedDate),
               style: TextStyle(color: Colors.purple.shade900),
             ),
           ),
@@ -104,12 +149,12 @@ class CalendarPageState extends State<CalendarPage> {
                 child: Column(
                   children: [
                     Text(
-                      "Your Last Migraine:",
+                      "Son Migreninizin Tarihi:",
                       style: TextStyle(color: Colors.white, fontSize: 30),
                     ),
                     Text(
-                      formatDate(selectedDate),
-                      style: TextStyle(color: Colors.white, fontSize: 15),
+                      formatDateTr(selectedDate),
+                      style: TextStyle(color: Colors.white, fontSize: 12),
                     ),
                   ],
                 ),
@@ -170,7 +215,7 @@ class CalendarPageState extends State<CalendarPage> {
                     children: [
                       Icon(Icons.add_circle, color: Colors.white),
                       Text(
-                        "Add a new event",
+                        "Yeni migren atağı girin",
                         style: TextStyle(color: Colors.white, fontSize: 20),
                       )
                     ],

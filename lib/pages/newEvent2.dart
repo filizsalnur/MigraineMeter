@@ -6,11 +6,12 @@ import 'package:migraine_meter/models/model.dart';
 import "./NewEvent2.dart";
 import 'newEvent3.dart';
 
-
 class NewEvent2 extends StatefulWidget {
   final DataModel dataModel;
-  const NewEvent2({super.key,
-  required this.dataModel,});
+  const NewEvent2({
+    super.key,
+    required this.dataModel,
+  });
 
   @override
   State<NewEvent2> createState() => _NewEvent2State();
@@ -65,11 +66,8 @@ class _NewEvent2State extends State<NewEvent2> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Yeni Atak',
-          style: TextStyle(color: Colors.purple, fontSize: 25),
-        ),
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.purple.shade900,
+        elevation: 0,
       ),
       backgroundColor: Colors.purple.shade900,
       body: SingleChildScrollView(
@@ -77,7 +75,7 @@ class _NewEvent2State extends State<NewEvent2> {
           child: Column(
             children: [
               SizedBox(
-                height: 30,
+                height: 10,
               ),
               Text(
                 "Ağrı nerede Başladı?",
@@ -275,7 +273,6 @@ class _NewEvent2State extends State<NewEvent2> {
                         image: AssetImage('assets/b8.png'),
                       )),
                   ElevatedButton(
-
                       style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all(
                             part8 ? Colors.red[400] : Colors.purple.shade100),
@@ -297,99 +294,81 @@ class _NewEvent2State extends State<NewEvent2> {
                       child: Image(
                         height: 150,
                         image: AssetImage('assets/b9.png'),
-
                       )),
                 ],
               ),
               SizedBox(
                 height: 30,
               ),
-         
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      ElevatedButton(
-                          style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all(part9
-                                ? Colors.red[400]
-                                : Colors.purple.shade100),
-                          ),
-                          onPressed: () {
-                            setState(() {
-                              part1 = false;
-                              part2 = false;
-                              part3 = false;
-                              part4 = false;
-                              part5 = false;
-                              part6 = false;
-                              part7 = false;
-                              part8 = false;
-                              part9 = true;
-                              part10 = false;
-                            });
-                          },
-                          child: Image(
-                            height: 150,
-                            image: AssetImage('assets/b10.png'),
-                          )),
-                      ElevatedButton(
-                          style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all(part10
-                                ? Colors.red[400]
-                                : Colors.purple.shade100),
-                          ),
-                          onPressed: () {
-                            setState(() {
-                              part1 = false;
-                              part2 = false;
-                              part3 = false;
-                              part4 = false;
-                              part5 = false;
-                              part6 = false;
-                              part7 = false;
-                              part8 = false;
-                              part9 = false;
-                              part10 = true;
-                            });
-                          },
-                          child: Image(
-                            height: 150,
-                            image: AssetImage('assets/b7.png'),
-                          )),
-                    ],
-                  ),
-               
-              Column(
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  SizedBox(
-                    height: 30,
-                  ),
-                  Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-                    Padding(
-                      padding: const EdgeInsets.only(right: 20.0),
-                      child: ElevatedButton(
-                          onPressed: () {
-                            print(findAchePart());
-                            widget.dataModel.setType(findAchePart());
-                            widget.dataModel.printData();
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>  NewEvent3(dataModel: widget.dataModel)),
-                            );
-                            
-                          },
-                          child: Text(
-                            "Devam",
-                            style: TextStyle(color: Colors.white, fontSize: 30),
-                          )),
-                    ),
-                  ]),
+                  ElevatedButton(
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(
+                            part9 ? Colors.red[400] : Colors.purple.shade100),
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          part1 = false;
+                          part2 = false;
+                          part3 = false;
+                          part4 = false;
+                          part5 = false;
+                          part6 = false;
+                          part7 = false;
+                          part8 = false;
+                          part9 = true;
+                          part10 = false;
+                        });
+                      },
+                      child: Image(
+                        height: 150,
+                        image: AssetImage('assets/b10.png'),
+                      )),
+                  ElevatedButton(
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(
+                            part10 ? Colors.red[400] : Colors.purple.shade100),
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          part1 = false;
+                          part2 = false;
+                          part3 = false;
+                          part4 = false;
+                          part5 = false;
+                          part6 = false;
+                          part7 = false;
+                          part8 = false;
+                          part9 = false;
+                          part10 = true;
+                        });
+                      },
+                      child: Image(
+                        height: 150,
+                        image: AssetImage('assets/b7.png'),
+                      )),
                 ],
-              )
+              ),
             ],
           ),
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          print(findAchePart());
+          widget.dataModel.setType(findAchePart());
+          widget.dataModel.printData();
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => NewEvent3(dataModel: widget.dataModel)),
+          );
+        },
+        child: Icon(Icons.arrow_right_alt_outlined,
+            size: 40, color: Colors.purple.shade900),
+        backgroundColor: Colors.white,
       ),
       // bottomNavigationBar: BottomBar(pageName: "pageName"),
     );
