@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:migraine_meter/pages/calendar_page.dart';
 import 'package:migraine_meter/pages/historyPage.dart';
 
 class BottomBar extends StatefulWidget {
@@ -29,20 +30,24 @@ class BottomBarState extends State<BottomBar> {
             children: [
            
             ElevatedButton(
-                onPressed: () {},
-                child: Icon(Icons.home, size: 40,color: (widget.pageName =="home") ?Colors.white: Colors.black),
+                onPressed: () {
+                 if(widget.pageName!="calendar"){   Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => CalendarPage()));}
+                },
+                child: Icon(Icons.calendar_month, size: 40,color: (widget.pageName =="calendar") ?Colors.white: Colors.black),
                 style: ButtonStyle(
                   shape: MaterialStateProperty.all(CircleBorder()),
                   padding: MaterialStateProperty.all(EdgeInsets.all(10)),
                     elevation: MaterialStateProperty.all(0),
-                  backgroundColor: (widget.pageName =="home") ? MaterialStateProperty.all(Colors.purple.shade900):MaterialStateProperty.all(Colors.white), 
+                  backgroundColor: (widget.pageName =="calendar") ? MaterialStateProperty.all(Colors.purple.shade900):MaterialStateProperty.all(Colors.white), 
                  
                 ),
               ),
             ElevatedButton(
                 onPressed: () {
-                    Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => MainHistory()));
+                  if(widget.pageName != "history"){ Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => MainHistory()));}
+                   
                 },
                 child: Icon(Icons.history, size: 40,color: (widget.pageName =="history") ?Colors.white: Colors.black),
                 style: ButtonStyle(

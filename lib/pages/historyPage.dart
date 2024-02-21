@@ -28,6 +28,7 @@ class _MainHistoryState extends State<MainHistory> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CalendarAppBar(
+        backButton: false,
         onDateChanged: (date) {
           setState(() async {
             print(date);
