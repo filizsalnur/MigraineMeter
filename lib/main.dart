@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:migraine_meter/components/bottomAppBar.dart';
 
 void main() {
   runApp(const MainApp());
@@ -16,6 +17,7 @@ class MainApp extends StatelessWidget {
           child: Text('Hello World!'),
           
         ),
+        bottomNavigationBar: BottomBar(pageName: "settings"),
       ),
     );
   }
