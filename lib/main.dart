@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:migraine_meter/components/bottomAppBar.dart';
+
+import 'package:migraine_meter/pages/historyPage.dart';
+
 
 void main() {
   runApp(const MainApp());
@@ -12,13 +14,9 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-          
-        ),
-        bottomNavigationBar: BottomBar(pageName: "settings"),
-      ),
+
+      home: MainHistory(),
+
     );
   }
 }
