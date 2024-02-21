@@ -51,18 +51,7 @@ class _MainHistoryState extends State<MainHistory> {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Text("Selected Date: ${selectedDate.toString()}"),
-          SizedBox(
-            height: 500,
-          ),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const NewEvent()),
-              );
-            },
-            child: Text("Add new event"),
-          ),
+         
         ],
       )),
       bottomNavigationBar: BottomBar(pageName: "history"),

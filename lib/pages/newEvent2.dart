@@ -1,13 +1,16 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:migraine_meter/models/model.dart';
 
 import "./NewEvent2.dart";
 import 'newEvent3.dart';
 
 
 class NewEvent2 extends StatefulWidget {
-  const NewEvent2({super.key});
+  final DataModel dataModel;
+  const NewEvent2({super.key,
+  required this.dataModel,});
 
   @override
   State<NewEvent2> createState() => _NewEvent2State();
@@ -369,10 +372,12 @@ class _NewEvent2State extends State<NewEvent2> {
                       child: ElevatedButton(
                           onPressed: () {
                             print(findAchePart());
+                            widget.dataModel.setType(findAchePart());
+                            widget.dataModel.printData();
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const NewEvent3()),
+                                  builder: (context) =>  NewEvent3(dataModel: widget.dataModel)),
                             );
                             
                           },

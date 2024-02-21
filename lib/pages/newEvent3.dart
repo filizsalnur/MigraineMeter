@@ -1,11 +1,14 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:migraine_meter/models/model.dart';
 
 import "./newEvent2.dart";
 
 class NewEvent3 extends StatefulWidget {
-  const NewEvent3({super.key});
+  final DataModel dataModel;
+  const NewEvent3({super.key,
+  required this.dataModel});
 
   @override
   State<NewEvent3> createState() => _NewEvent3State();
@@ -405,6 +408,8 @@ class _NewEvent3State extends State<NewEvent3> {
                       padding: const EdgeInsets.only(right:20.0),
                       child: ElevatedButton(
                           onPressed: (){
+                            widget.dataModel.setSymptoms(findSymptomsType());
+                            widget.dataModel.printData();
                             print(findSymptomsType().toString());
                           },
                           child: Text(

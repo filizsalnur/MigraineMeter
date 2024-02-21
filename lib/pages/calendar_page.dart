@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:migraine_meter/components/bottomAppBar.dart';
 import 'package:table_calendar/table_calendar.dart';
 import "./newEvent1.dart";
+import '../models/model.dart';
 
 class CalendarPage extends StatefulWidget {
   const CalendarPage({super.key});
@@ -15,6 +16,7 @@ class CalendarPageState extends State<CalendarPage> {
   DateTime _focusedDay = DateTime.now();
   DateTime _selectedDay = DateTime.now();
   CalendarFormat _calendarFormat = CalendarFormat.month;
+  DataModel dataModel = DataModel();
 
   @override
   void initState() {
@@ -22,8 +24,9 @@ class CalendarPageState extends State<CalendarPage> {
     super.initState();
   }
 
+
   void printSelectedDate() {
-    print("Selected Date: ${formatDate(_selectedDay)}");
+    print("Selected Date: ${_selectedDay.toString()}");
   }
 
   String formatDate(DateTime? date) {
@@ -136,8 +139,12 @@ class CalendarPageState extends State<CalendarPage> {
               ),
               ElevatedButton(
                 onPressed: () {
+                  dataModel.setDate(_selectedDay);
+                  printSelectedDate();
+                   dataModel.printData();
+                  
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return const NewEvent();
+                    return  NewEvent(dataModel:dataModel);
                   }));
                 },
                 style: ButtonStyle(
