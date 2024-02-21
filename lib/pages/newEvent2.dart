@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import "./newEvent2.dart";
-class NewEvent extends StatefulWidget {
-  const NewEvent({super.key});
+import "./NewEvent2.dart";
+
+class NewEvent2 extends StatefulWidget {
+  const NewEvent2({super.key});
 
   @override
-  State<NewEvent> createState() => _NewEventState();
+  State<NewEvent2> createState() => _NewEvent2State();
 }
 
-class _NewEventState extends State<NewEvent> {
+class _NewEvent2State extends State<NewEvent2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -103,13 +104,7 @@ class _NewEventState extends State<NewEvent> {
                     width: 200,
                   ),
                   ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const NewEvent2()),
-                        );
-                      },
+                      onPressed: () {},
                       child: Text(
                         "Devam",
                         style: TextStyle(color: Colors.white, fontSize: 30),

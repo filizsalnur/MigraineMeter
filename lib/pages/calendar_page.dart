@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:migraine_meter/components/bottomAppBar.dart';
 import 'package:table_calendar/table_calendar.dart';
+import "./newEvent1.dart";
 
 class CalendarPage extends StatefulWidget {
   const CalendarPage({super.key});
@@ -20,9 +21,10 @@ class CalendarPageState extends State<CalendarPage> {
     selectedDate = DateTime.now();
     super.initState();
   }
+
   void printSelectedDate() {
-  print("Selected Date: ${formatDate(_selectedDay)}");
-}
+    print("Selected Date: ${formatDate(_selectedDay)}");
+  }
 
   String formatDate(DateTime? date) {
     if (date == null) {
@@ -30,10 +32,33 @@ class CalendarPageState extends State<CalendarPage> {
     }
 
     List<String> months = [
-      '', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'
+      '',
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December'
     ];
 
-    List<String> suffixes = ['th', 'st', 'nd', 'rd', 'th', 'th', 'th', 'th', 'th', 'th'];
+    List<String> suffixes = [
+      'th',
+      'st',
+      'nd',
+      'rd',
+      'th',
+      'th',
+      'th',
+      'th',
+      'th',
+      'th'
+    ];
 
     int day = date.day;
     int month = date.month;
@@ -111,11 +136,15 @@ class CalendarPageState extends State<CalendarPage> {
               ),
               ElevatedButton(
                 onPressed: () {
-                   printSelectedDate();
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return const NewEvent();
+                  }));
                 },
                 style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.purple.shade900),
-                  shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))),
+                  backgroundColor:
+                      MaterialStateProperty.all(Colors.purple.shade900),
+                  shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20))),
                   padding: MaterialStateProperty.all(EdgeInsets.all(20)),
                 ),
                 child: Container(
