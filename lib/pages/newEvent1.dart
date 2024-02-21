@@ -17,6 +17,25 @@ class _NewEventState extends State<NewEvent> {
   bool mediumAche = false;
   bool highAche = false;
   bool veryHighAche = false;
+  findAcheType(){
+    if(noAche){
+      return "No Ache";
+    }
+    if(lowAche){
+      return "Low Ache";
+    }
+    if(mediumAche){
+      return "Medium Ache";
+    }
+    if(highAche){
+      return "High Ache";
+    }
+    if(veryHighAche){
+      return "Very High Ache";
+    }
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -168,11 +187,14 @@ class _NewEventState extends State<NewEvent> {
                     Padding(
                       padding: const EdgeInsets.only(right: 20.0),
                       child: ElevatedButton(
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => NewEvent2()));
+
+                          onPressed: (){
+                            print(findAcheType().toString());
+                            Navigator.push(context, MaterialPageRoute(builder: (context) {
+                              return const NewEvent2();
+                              
+                            }));
+
                           },
                           child: Text(
                             "Devam",
@@ -186,6 +208,7 @@ class _NewEventState extends State<NewEvent> {
           ),
         ),
       ),
+      
       // bottomNavigationBar: BottomBar(pageName: "pageName"),
     );
   }

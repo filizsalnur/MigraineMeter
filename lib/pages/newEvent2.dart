@@ -2,6 +2,10 @@
 
 import 'package:flutter/material.dart';
 
+import "./NewEvent2.dart";
+import 'newEvent3.dart';
+
+
 class NewEvent2 extends StatefulWidget {
   const NewEvent2({super.key});
 
@@ -268,6 +272,7 @@ class _NewEvent2State extends State<NewEvent2> {
                         image: AssetImage('assets/b8.png'),
                       )),
                   ElevatedButton(
+
                       style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all(
                             part8 ? Colors.red[400] : Colors.purple.shade100),
@@ -289,6 +294,7 @@ class _NewEvent2State extends State<NewEvent2> {
                       child: Image(
                         height: 150,
                         image: AssetImage('assets/b9.png'),
+
                       )),
                 ],
               ),
@@ -363,6 +369,7 @@ class _NewEvent2State extends State<NewEvent2> {
                       child: ElevatedButton(
                           onPressed: () {
                             print(findAchePart());
+                            
                           },
                           child: Text(
                             "Devam",
