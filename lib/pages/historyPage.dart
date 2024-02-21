@@ -97,56 +97,56 @@ class _MainHistoryState extends State<MainHistory> {
                                     width: 100,
                                     height: 100,
                                   );
-                                } else if (part.contains('part2')) {
+                                } if (part.contains('part2')) {
                                   return Image.asset(
                                     'assets/b2.png',
                                     width: 100,
                                     height: 100,
                                   );
                                 }
-                                  } else if (part.contains('part3')) {
+                                  } if (part.contains('part3')) {
                           return Image.asset(
                             'assets/b3.png',
                             width: 100,
                             height: 100,
                           );
-                        } else if (part.contains('part4')) {
+                        }  if (part.contains('part4')) {
                           return Image.asset(
                             'assets/b4.png',
                             width: 100,
                             height: 100,
                           );
-                        } else if (part.contains('part5')) {
+                        } if (part.contains('part5')) {
                           return Image.asset(
                             'assets/b5.png',
                             width: 100,
                             height: 100,
                           );
-                        } else if (part.contains('part6')) {
+                        }  if (part.contains('part6')) {
                           return Image.asset(
                             'assets/b6.png',
                             width: 100,
                             height: 100,
                           );
-                        } else if (part.contains('part7')) {
+                        }  if (part.contains('part7')) {
                           return Image.asset(
                             'assets/b7.png',
                             width: 100,
                             height: 100,
                           );
-                        } else if (part.contains('part8')) {
+                        }  if (part.contains('part8')) {
                           return Image.asset(
                             'assets/b8.png',
                             width: 100,
                             height: 100,
                           );
-                        } else if (part.contains('part9')) {
+                        }  if (part.contains('part9')) {
                           return Image.asset(
                             'assets/b9.png',
                             width: 100,
                             height: 100,
                           );
-                        } else if (part.contains('part10')) {
+                        }  if (part.contains('part10')) {
                           return Image.asset(
                             'assets/b10.png',
                             width: 100,
