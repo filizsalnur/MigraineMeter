@@ -1,7 +1,8 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:migraine_meter/components/bottomAppBar.dart';
+
+import "./newEvent2.dart";
 
 class NewEvent extends StatefulWidget {
   const NewEvent({super.key});
@@ -93,6 +94,7 @@ class _NewEventState extends State<NewEvent> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   ElevatedButton(
+
                      style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(!mediumAche ? Colors.purple.shade900 : Colors.red),
                     ),
@@ -127,6 +129,7 @@ class _NewEventState extends State<NewEvent> {
                       child: Image(
                         height: 150,
                         image: AssetImage('assets/2.png'),
+
                       )),
                 ],
               ),

@@ -61,7 +61,7 @@ class _MainHistoryState extends State<MainHistory> {
                 MaterialPageRoute(builder: (context) => const NewEvent()),
               );
             },
-            child: Text("Add a new event data"),
+            child: Text("Add new event"),
           ),
         ],
       )),
