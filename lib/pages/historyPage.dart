@@ -4,6 +4,7 @@ import 'package:calendar_appbar/calendar_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:migraine_meter/components/bottomAppBar.dart';
 import '../services/data.dart';
+import 'newEvent1.dart';
 
 class MainHistory extends StatefulWidget {
   const MainHistory({super.key});
@@ -51,8 +52,16 @@ class _MainHistoryState extends State<MainHistory> {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Text("Selected Date: ${selectedDate.toString()}"),
+          SizedBox(
+            height: 500,
+          ),
           ElevatedButton(
-            onPressed: () async {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const NewEvent()),
+              );
+            },
             child: Text("Add a new event data"),
           ),
         ],
