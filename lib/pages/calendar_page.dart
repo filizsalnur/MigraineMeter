@@ -225,7 +225,8 @@ class CalendarPageState extends State<CalendarPage> {
             ],
           ),
         ),
-        bottomNavigationBar: BottomBar(pageName: "calendar"),
+       bottomNavigationBar: BottomBar(pageName: "calendar"),
+      
       ),
     );
   }

@@ -73,6 +73,7 @@ class _MainHistoryState extends State<MainHistory> {
           
         },
       ),
+      bottomNavigationBar: BottomBar(pageName: "history"),
     );
   }
 }
