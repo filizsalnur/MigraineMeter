@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import "./NewEvent2.dart";
+import 'newEvent3.dart';
 
 class NewEvent2 extends StatefulWidget {
   const NewEvent2({super.key});
@@ -104,7 +105,10 @@ class _NewEvent2State extends State<NewEvent2> {
                     width: 200,
                   ),
                   ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => NewEvent3()));
+                      },
                       child: Text(
                         "Devam",
                         style: TextStyle(color: Colors.white, fontSize: 30),
