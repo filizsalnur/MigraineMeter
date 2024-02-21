@@ -29,16 +29,11 @@ class _MainHistoryState extends State<MainHistory> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CalendarAppBar(
+        white: Colors.white,
+    black: Colors.black,
+    accent: Colors.purple.shade900,
         backButton: false,
         onDateChanged: (date) {
-          setState(() async {
-            print(date);
-        
-            await StorageServices.saveData(
-                date.toString(),
-                dateData(date.toString(), random.nextInt(10), "Migraine",
-                    ["Nausea", "Vomiting"]));
-          });
         },
         lastDate: DateTime.now(),
         events: List.generate(
