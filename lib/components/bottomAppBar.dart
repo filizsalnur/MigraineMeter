@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:migraine_meter/pages/historyPage.dart';
 
 class BottomBar extends StatefulWidget {
   final String pageName;
@@ -39,7 +40,10 @@ class BottomBarState extends State<BottomBar> {
                 ),
               ),
             ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                    Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => MainHistory()));
+                },
                 child: Icon(Icons.history, size: 40,color: (widget.pageName =="history") ?Colors.white: Colors.black),
                 style: ButtonStyle(
                   shape: MaterialStateProperty.all(CircleBorder()),
