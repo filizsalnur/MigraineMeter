@@ -63,25 +63,48 @@ class _MainHistoryState extends State<MainHistory> {
                 color: Colors.purple.shade900,
                 child: Card(
                   color: Colors.deepPurpleAccent,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: dataParts.map((part) {
-                      print("part $part");
-                      if (part.contains('intensity')) {}
-                      if (part.contains('type')) {
-                        if (part.contains('part1')) {
-                          return Image.asset(
-                            'assets/b1.png',
-                            width: 100,
-                            height: 100,
-                          );
-                        } else if (part.contains('part2')) {
-                          return Image.asset(
-                            'assets/b2.png',
-                            width: 100,
-                            height: 100,
-                          );
-                        } else if (part.contains('part3')) {
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          flex: 2,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: dataParts.map((part) {
+                              if (part.contains('intensity') || part.contains('type')) {
+                                return ListTile(
+                                  title: Text(
+                                    removeBracketsAndBraces(part.trim()),
+                                    style: TextStyle(fontSize: 25),
+                                  ),
+                                );
+                              }
+                              return SizedBox();
+                            }).toList(),
+                          ),
+                        ),
+                        Expanded(
+                          flex: 3,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: dataParts.map((part) {
+                              if (part.contains('type')) {
+                                if (part.contains('part1')) {
+                                  return Image.asset(
+                                    'assets/b1.png',
+                                    width: 100,
+                                    height: 100,
+                                  );
+                                } else if (part.contains('part2')) {
+                                  return Image.asset(
+                                    'assets/b2.png',
+                                    width: 100,
+                                    height: 100,
+                                  );
+                                }
+                                  } else if (part.contains('part3')) {
                           return Image.asset(
                             'assets/b3.png',
                             width: 100,
@@ -129,17 +152,21 @@ class _MainHistoryState extends State<MainHistory> {
                             width: 100,
                             height: 100,
                           );
-                        }
-                      }
-
-                      if (part.contains('symptoms')) {}
-                      return ListTile(
+                        
+                              } if (part.contains('symptoms')) {
+                                   return ListTile(
                         title: Text(
                           removeBracketsAndBraces(part.trim()),
                           style: TextStyle(fontSize: 25),
                         ),
                       );
-                    }).toList(),
+                    }
+                              return SizedBox();
+                            }).toList(),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               );
