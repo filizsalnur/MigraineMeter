@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'dart:math';
 import 'package:calendar_appbar/calendar_appbar.dart';
 import 'package:flutter/material.dart';
+import 'package:migraine_meter/components/bottomAppBar.dart';
 import '../services/data.dart';
 
 class MainHistory extends StatefulWidget {
@@ -55,6 +56,7 @@ class _MainHistoryState extends State<MainHistory> {
           ),
         ],
       )),
+      bottomNavigationBar: BottomBar(pageName: "history"),
     );
   }
 }
