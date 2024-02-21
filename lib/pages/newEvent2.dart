@@ -369,6 +369,11 @@ class _NewEvent2State extends State<NewEvent2> {
                       child: ElevatedButton(
                           onPressed: () {
                             print(findAchePart());
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const NewEvent3()),
+                            );
                             
                           },
                           child: Text(
