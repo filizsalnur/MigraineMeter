@@ -27,7 +27,7 @@ class DataModel {
       "symptoms": symptoms
     };
 
-    await StorageServices.saveData(date.toString(), data.toString());
+    await StorageServices.saveData(date!, data.toString());
 
     return data;
   }

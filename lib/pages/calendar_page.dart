@@ -26,11 +26,7 @@ class CalendarPageState extends State<CalendarPage> {
   }
 
   String formatDateToString(DateTime dateTime) {
-  return "${dateTime.year}-${dateTime.month.toString().padLeft(2, '0')}-${dateTime.day.toString().padLeft(2, '0')}";
-}
-
-  void printSelectedDate() {
-    print("Selected Date: ${_selectedDay.toString()}");
+    return "${dateTime.year}-${dateTime.month.toString().padLeft(2, '0')}-${dateTime.day.toString().padLeft(2, '0')}";
   }
 
   String formatDate(DateTime? date) {
@@ -152,7 +148,6 @@ class CalendarPageState extends State<CalendarPage> {
                   });
 
                   dataModel.setDate(formatDateToString(_selectedDay));
-                  printSelectedDate();
                   dataModel.printData();
 
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
