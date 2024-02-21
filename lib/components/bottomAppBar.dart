@@ -21,12 +21,12 @@ class BottomBarState extends State<BottomBar> {
       elevation: 100,
       shape: const CircularNotchedRectangle(),
 
-      child:Padding(padding: EdgeInsets.all(0),
+
       child: Column(
         children: [
           SizedBox(height: 10,),
           Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
            
             ElevatedButton(
@@ -72,7 +72,7 @@ class BottomBarState extends State<BottomBar> {
                       
           ]),
         ],
-      ),)
+      )
     );
   }
 }
