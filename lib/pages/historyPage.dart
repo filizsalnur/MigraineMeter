@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:calendar_appbar/calendar_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:migraine_meter/components/bottomAppBar.dart';
+import 'package:migraine_meter/pages/calendar_page.dart';
 import '../services/data.dart';
 import 'newEvent1.dart';
 
@@ -30,12 +31,16 @@ class _MainHistoryState extends State<MainHistory> {
     return Scaffold(
       appBar: CalendarAppBar(
         white: Colors.white,
-    black: Colors.black,
-    accent: Colors.purple.shade900,
+        black: Colors.black,
+        accent: Colors.purple.shade900,
         backButton: false,
-
-        onDateChanged: (date) {},
-
+        onDateChanged: (date) {
+          print(date);
+          StorageServices.loadData(CalendarPageState().formatDateToString(date))
+              .then((value) {
+            print(value);
+          });
+        },
         lastDate: DateTime.now(),
         events: List.generate(
             100,

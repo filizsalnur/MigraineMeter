@@ -2,8 +2,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:migraine_meter/models/model.dart';
+import 'package:migraine_meter/pages/historyPage.dart';
 import '../services/data.dart';
+import '../utils/alert_utils.dart';
 import "./newEvent2.dart";
+import 'package:quickalert/quickalert.dart';
 
 class NewEvent3 extends StatefulWidget {
   final DataModel dataModel;
@@ -439,13 +442,22 @@ class _NewEvent3State extends State<NewEvent3> {
                       child: ElevatedButton(
                           onPressed: () async {
                             widget.dataModel.setSymptoms(findSymptomsType());
-                         
+
                      
                               await StorageServices.saveData(widget.dataModel.date!, widget.dataModel.convertToJson());
-        
+
                             print('---------------');
                             StorageServices().printAllSharedPreferences();
                             print('---------------');
+                            await AlertUtils().successfulAlert(
+                                "Atak başarıyla eklendi", context);
+                            await Future.delayed(Duration(milliseconds: 500));
+
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) {
+                              return MainHistory();
+                            }));
+                            // ignore: use_build_context_synchronously
                           },
                           child: Text(
                             "Devam",
