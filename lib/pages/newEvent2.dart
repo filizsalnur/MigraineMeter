@@ -304,10 +304,9 @@ class _NewEvent2State extends State<NewEvent2> {
               SizedBox(
                 height: 30,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
+         
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       ElevatedButton(
                           style: ButtonStyle(
@@ -358,9 +357,8 @@ class _NewEvent2State extends State<NewEvent2> {
                             image: AssetImage('assets/b7.png'),
                           )),
                     ],
-                  )
-                ],
-              ),
+                  ),
+               
               Column(
                 children: [
                   SizedBox(
