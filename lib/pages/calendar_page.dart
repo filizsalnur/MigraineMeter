@@ -16,6 +16,7 @@ class CalendarPageState extends State<CalendarPage> {
   DateTime _focusedDay = DateTime.now();
   DateTime _selectedDay = DateTime.now();
   CalendarFormat _calendarFormat = CalendarFormat.month;
+
   DataModel dataModel = DataModel();
 
   @override
@@ -23,7 +24,6 @@ class CalendarPageState extends State<CalendarPage> {
     selectedDate = DateTime.now();
     super.initState();
   }
-
 
   void printSelectedDate() {
     print("Selected Date: ${_selectedDay.toString()}");
@@ -139,12 +139,20 @@ class CalendarPageState extends State<CalendarPage> {
               ),
               ElevatedButton(
                 onPressed: () {
+                  setState(() {
+                    dataModel = DataModel(
+                        date: null,
+                        intensity: null,
+                        type: null,
+                        symptoms: null);
+                  });
+
                   dataModel.setDate(_selectedDay);
                   printSelectedDate();
-                   dataModel.printData();
-                  
+                  dataModel.printData();
+
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return  NewEvent(dataModel:dataModel);
+                    return NewEvent(dataModel: dataModel);
                   }));
                 },
                 style: ButtonStyle(

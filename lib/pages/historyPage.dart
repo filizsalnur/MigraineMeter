@@ -30,16 +30,7 @@ class _MainHistoryState extends State<MainHistory> {
     return Scaffold(
       appBar: CalendarAppBar(
         backButton: false,
-        onDateChanged: (date) {
-          setState(() async {
-            print(date);
-        
-            await StorageServices.saveData(
-                date.toString(),
-                dateData(date.toString(), random.nextInt(10), "Migraine",
-                    ["Nausea", "Vomiting"]));
-          });
-        },
+        onDateChanged: (date) {},
         lastDate: DateTime.now(),
         events: List.generate(
             100,
@@ -51,7 +42,6 @@ class _MainHistoryState extends State<MainHistory> {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Text("Selected Date: ${selectedDate.toString()}"),
-         
         ],
       )),
       bottomNavigationBar: BottomBar(pageName: "history"),

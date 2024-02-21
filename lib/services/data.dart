@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class StorageServices {
-  static Future<void> saveData(String key, dateData value) async {
+  static Future<void> saveData(String key, String dataModel) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString(key, value.toString());
+    prefs.setString(key, dataModel);
   }
 
   static Future<String?> loadData(String key) async {
@@ -23,13 +23,12 @@ class StorageServices {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.clear();
   }
-}
 
-class dateData {
-  final String date;
-  final int intensity;
-  final String type;
-  final List<String> sideEffects;
-
-  dateData(this.date, this.intensity, this.type, this.sideEffects);
+  printAllShared() {
+    print(
+        "=-=-=-=-=-=-=-=-=-=-=-=-=-= INSIDE SHARED =-=-=-=-=-=-=-=-=-=-=-=-=-=");
+    SharedPreferences.getInstance().then((prefs) {
+      print(prefs.getKeys());
+    });
+  }
 }
