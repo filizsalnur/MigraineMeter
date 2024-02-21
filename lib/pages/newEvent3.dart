@@ -439,10 +439,11 @@ class _NewEvent3State extends State<NewEvent3> {
                       child: ElevatedButton(
                           onPressed: () async {
                             widget.dataModel.setSymptoms(findSymptomsType());
+
                             widget.dataModel.printData();
 
                             print('---------------');
-                            await StorageServices().printAllShared();
+                            StorageServices().printAllSharedPreferences();
                             print('---------------');
                           },
                           child: Text(

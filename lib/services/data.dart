@@ -24,11 +24,15 @@ class StorageServices {
     prefs.clear();
   }
 
-  printAllShared() {
-    print(
-        "=-=-=-=-=-=-=-=-=-=-=-=-=-= INSIDE SHARED =-=-=-=-=-=-=-=-=-=-=-=-=-=");
-    SharedPreferences.getInstance().then((prefs) {
-      print(prefs.getKeys());
-    });
+ void printAllSharedPreferences() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    final allPrefs = prefs.getKeys();
+
+    print('======= All SharedPreferences =======');
+    for (var key in allPrefs) {
+      final value = prefs.get(key);
+      print('$key: $value');
+    }
+    print('======= End of SharedPreferences =======');
   }
 }
