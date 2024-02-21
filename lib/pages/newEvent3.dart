@@ -440,7 +440,7 @@ class _NewEvent3State extends State<NewEvent3> {
                           onPressed: () async {
                             widget.dataModel.setSymptoms(findSymptomsType());
 
-                            widget.dataModel.printData();
+                              await StorageServices.saveData(widget.dataModel.date!, widget.dataModel.convertToJson());
 
                             print('---------------');
                             StorageServices().printAllSharedPreferences();

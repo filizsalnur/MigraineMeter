@@ -18,8 +18,8 @@ class DataModel {
     print("Symptoms: $symptoms");
   }
 
-  convertToJson() async {
-    await StorageServices.clearData();
+  String convertToJson()  {
+
     Map<String, dynamic> data = {
       "date": date.toString(),
       "intensity": intensity,
@@ -27,9 +27,9 @@ class DataModel {
       "symptoms": symptoms
     };
 
-    await StorageServices.saveData(date!, data.toString());
+  
 
-    return data;
+    return data.toString();
   }
 
   DataModel({this.date, this.intensity, this.type, this.symptoms});
