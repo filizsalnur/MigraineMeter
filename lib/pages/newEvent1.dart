@@ -1,5 +1,9 @@
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
+
 import 'package:flutter/material.dart';
+
 import "./newEvent2.dart";
+
 class NewEvent extends StatefulWidget {
   const NewEvent({super.key});
 
@@ -8,6 +12,11 @@ class NewEvent extends StatefulWidget {
 }
 
 class _NewEventState extends State<NewEvent> {
+  bool noAche = false;
+  bool lowAche = false; 
+  bool mediumAche = false;
+  bool highAche = false;
+  bool veryHighAche = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,107 +28,169 @@ class _NewEventState extends State<NewEvent> {
         backgroundColor: Colors.white,
       ),
       backgroundColor: Colors.purple.shade900,
-      body: Center(
-        child: Column(
-          children: <Widget>[
-            SizedBox(
-              height: 20,
-            ),
-            Text(
-              "Bu atağınızın en yüksek şiddeti nedir?",
-              style: TextStyle(fontSize: 22, color: Colors.white),
-            ),
-            SizedBox(
-              height: 50,
-            ),
-            Row(
-              children: [
-                ElevatedButton(
-                    onPressed: null,
-                    child: Image(
-                      height: 150,
-                      image: AssetImage('assets/3.png'),
-                    )),
-                SizedBox(
-                  width: 20,
-                ),
-                ElevatedButton(
-                    onPressed: null,
-                    child: Image(
-                      height: 150,
-                      image: AssetImage('assets/4.png'),
-                    )),
-              ],
-            ),
-            SizedBox(
-              height: 50,
-            ),
-            Row(
-              children: [
-                ElevatedButton(
-                    onPressed: null,
-                    child: Image(
-                      height: 150,
-                      image: AssetImage('assets/2.png'),
-                    )),
-                SizedBox(
-                  width: 20,
-                ),
-                ElevatedButton(
-                    onPressed: null,
-                    child: Image(
-                      height: 150,
-                      image: AssetImage('assets/1.png'),
-                    )),
-              ],
-            ),
-            SizedBox(
-              height: 50,
-            ),
-            Row(
-              children: [
-                Row(
-                  children: [
-                    SizedBox(
-                      width: 110,
-                    ),
-                    ElevatedButton(
-                        onPressed: () {},
-                        child: Image(
-                          height: 150,
-                          image: AssetImage('assets/5.png'),
-                        )),
-                  ],
-                )
-              ],
-            ),
-            Column(
-              children: [
-                SizedBox(
-                  height: 50,
-                ),
-                Row(children: [
-                  SizedBox(
-                    width: 200,
-                  ),
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            children:[
+              SizedBox(
+                height: 20,
+              ),
+              Text(
+                "Bu atağınızın en yüksek şiddeti nedir?",
+                style: TextStyle(fontSize: 22, color: Colors.white),
+              ),
+              SizedBox(
+                height: 50,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      
+                children: [
                   ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const NewEvent2()),
-                        );
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(!noAche ? Colors.purple.shade900 : Colors.red),
+                    ),
+                    
+                    
+                      onPressed: (){
+                        setState(() {
+                          noAche = true;
+                          lowAche = false;
+                          mediumAche = false;
+                          highAche = false;
+                          veryHighAche = false;
+                        });
+                        
                       },
-                      child: Text(
-                        "Devam",
-                        style: TextStyle(color: Colors.white, fontSize: 30),
+                      child: Image(
+                        height: 150,
+                        image: AssetImage('assets/3.png'),
                       )),
-                ]),
-              ],
-            )
-          ],
+               
+                  ElevatedButton(
+                     style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(!lowAche ? Colors.purple.shade900 : Colors.red),
+                    ),
+                      onPressed: (){
+                        setState(() {
+                          noAche = false;
+                          lowAche = true;
+                          mediumAche = false;
+                          highAche = false;
+                          veryHighAche = false;
+                        });
+                      
+                      },
+                      child: Image(
+                        height: 150,
+                        image: AssetImage('assets/4.png'),
+                      )),
+                ],
+              ),
+              SizedBox(
+                height: 50,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ElevatedButton(
+
+                     style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(!mediumAche ? Colors.purple.shade900 : Colors.red),
+                    ),
+                      onPressed: (){
+                        setState(() {
+                          noAche = false;
+                          lowAche = false;
+                          mediumAche = true;
+                          highAche = false;
+                          veryHighAche = false;
+                        });
+                      },
+                      child: Image(
+                        height: 150,
+                        image: AssetImage('assets/1.png'),
+                      )),
+                
+                  ElevatedButton(
+                     style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(!highAche ? Colors.purple.shade900 : Colors.red),
+                    ),
+                      onPressed: (){
+                        
+                        setState(() {
+                          noAche = false;
+                          lowAche = false;
+                          mediumAche = false;
+                          highAche = true;
+                          veryHighAche = false;
+                        });
+                      },
+                      child: Image(
+                        height: 150,
+                        image: AssetImage('assets/2.png'),
+
+                      )),
+                ],
+              ),
+              SizedBox(
+                height: 50,
+              ),
+              Row(
+                       mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Row(
+                    children: [
+                   
+                    
+                      ElevatedButton(
+                         style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(!veryHighAche ? Colors.purple.shade900 : Colors.red),
+                    ),
+                          onPressed: (){
+                            setState(() {
+                              noAche = false;
+                              lowAche = false;
+                              mediumAche = false;
+                              highAche = false;
+                              veryHighAche = true;
+                            });
+                          },
+                          child: Image(
+                            height: 150,
+                            image: AssetImage('assets/5.png'),
+                          )),
+                    ],
+                  )
+                ],
+              ),
+              Column(
+               
+                children: [
+                  SizedBox(
+                    height: 50,
+                  ),
+                  Row(
+                     mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                  
+                    Padding(
+                      padding: const EdgeInsets.only(right:20.0),
+                      child: ElevatedButton(
+                          onPressed: null,
+                          child: Text(
+                            "Devam",
+                            style: TextStyle(color: Colors.white, fontSize: 30),
+                          )),
+                    ),
+                  ]),
+                ],
+              )
+            ],
+          ),
         ),
       ),
+      // bottomNavigationBar: BottomBar(pageName: "pageName"),
     );
   }
 }

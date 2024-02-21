@@ -33,8 +33,7 @@ class _MainHistoryState extends State<MainHistory> {
         onDateChanged: (date) {
           setState(() async {
             print(date);
-            // dateData(this., intensity, type, sideEffects)
-
+        
             await StorageServices.saveData(
                 date.toString(),
                 dateData(date.toString(), random.nextInt(10), "Migraine",
