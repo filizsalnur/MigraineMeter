@@ -8,6 +8,11 @@ class StorageServices {
 
   static Future<void> saveData(String key, String dataModel) async {
     final prefs = await SharedPreferences.getInstance();
+       final allPrefs = prefs.getKeys();
+       if(allPrefs.contains(key)){
+          String now= DateTime.now().millisecond.toString()+DateTime.now().microsecond.toString();
+          key=key+" "+now.toString();
+       }
     prefs.setString(key, dataModel);
 
 
