@@ -18,10 +18,23 @@ class StorageServices {
 
   }
 
-  static Future<String?> loadData(String key) async {
-    final prefs = await SharedPreferences.getInstance();
-    return prefs.getString(key);
+ static Future<List<String>> loadData(String keyPrefix) async {
+  final prefs = await SharedPreferences.getInstance();
+  final allPrefs = prefs.getKeys();
+  List<String> matchingValues = [];
+
+  for (String key in allPrefs) {
+    if (key.startsWith(keyPrefix)) {
+      String? value = prefs.getString(key);
+      if (value != null) {
+        matchingValues.add(value);
+      }
+    }
   }
+print(matchingValues);
+  return matchingValues;
+}
+
 
   static Future<void> removeData(String key) async {
     final prefs = await SharedPreferences.getInstance();
