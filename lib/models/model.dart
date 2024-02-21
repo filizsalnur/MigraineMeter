@@ -2,11 +2,11 @@ import 'package:migraine_meter/services/data.dart';
 import '../services/data.dart';
 
 class DataModel {
-  DateTime? date;
+  String? date;
   String? intensity;
   String? type;
   List<String>? symptoms;
-  setDate(DateTime date) => this.date = date;
+  setDate(String date) => this.date = date;
   setIntensity(String intensity) => this.intensity = intensity;
   setType(String type) => this.type = type;
   setSymptoms(List<String> symptoms) => this.symptoms = symptoms;

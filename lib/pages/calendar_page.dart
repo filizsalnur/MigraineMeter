@@ -25,6 +25,10 @@ class CalendarPageState extends State<CalendarPage> {
     super.initState();
   }
 
+  String formatDateToString(DateTime dateTime) {
+  return "${dateTime.year}-${dateTime.month.toString().padLeft(2, '0')}-${dateTime.day.toString().padLeft(2, '0')}";
+}
+
   void printSelectedDate() {
     print("Selected Date: ${_selectedDay.toString()}");
   }
@@ -147,7 +151,7 @@ class CalendarPageState extends State<CalendarPage> {
                         symptoms: null);
                   });
 
-                  dataModel.setDate(_selectedDay);
+                  dataModel.setDate(formatDateToString(_selectedDay));
                   printSelectedDate();
                   dataModel.printData();
 
