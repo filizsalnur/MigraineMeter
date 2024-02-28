@@ -78,8 +78,7 @@ class _MainHistoryState extends State<MainHistory> {
               List<String> dataParts = snapshot.data![index].split(',');
               return InkWell(
                 onTap: () {
-                  print("===============");
-                  print(dataParts);
+             
                   Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -109,8 +108,7 @@ class _MainHistoryState extends State<MainHistory> {
                                   print('no data');
 
                                   if (part.contains('intensity') ){
-                                    print(part);
-                                    print('DATA FOUND');
+                                
                                     return ListTile(
                                       title: Text(
                                        englishToTurkish(removeBracketsAndBraces(part.trim())),
@@ -352,12 +350,11 @@ class _MainHistoryState extends State<MainHistory> {
       } else if (input[i] == ']' || input[i] == '}') {
         inBracketOrBrace = false;
       } else if (!inBracketOrBrace) {
-        print("input[i]: ${input[i]}");
+  
         buffer.write(input[i]);
       }
     }
-    print("<<<<<<<<<<<<<<<<Buffer>>>>>>>>>>>>>>>>>>>>");
-    print(buffer.toString());
+
 
     return buffer.toString();
   }
