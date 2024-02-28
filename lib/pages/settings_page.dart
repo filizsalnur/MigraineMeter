@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:migraine_meter/components/bottomAppBar.dart';
+import 'package:migraine_meter/services/data.dart';
+import 'package:migraine_meter/utils/alert_utils.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
@@ -21,53 +23,33 @@ class SettingsPageState extends State<SettingsPage> {
           elevation: 0,
         ),
         backgroundColor: Colors.white,
-        body: Center(
-          child: Column(
-            children: [
-              Row(
-                children: [
-                  Container(
-                      width: MediaQuery.of(context).size.width / 3,
-                      color: Colors.purple.shade900,
-                      height: MediaQuery.of(context).size.height - 230,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        body: 
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+             children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          TextButton(
-                              onPressed: () {},
-                              child: Text(
-                                "Settings",
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 20),
-                              )),
-                          TextButton(
-                              onPressed: () {},
-                              child: Text(
-                                "Settings",
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 20),
-                              )),
-                          TextButton(
-                              onPressed: () {},
-                              child: Text(
-                                "Settings",
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 20),
-                              )),
-                          TextButton(
-                              onPressed: () {},
-                              child: Text(
-                                "Settings",
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 20),
-                              )),
+                          ElevatedButton(
+                            style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all(Colors.purple.shade900),
+                            ),
+                            onPressed: ()async{
+                             await StorageServices.clearData();
+                             await Future.delayed(Duration(milliseconds: 1000));
+                             await AlertUtils().successfulAlert("Geçmiş veriler başarıyla silindi", context);
+                               await Future.delayed(Duration(milliseconds: 1000));
+                            Navigator.pop(context);
+                          }, child: Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Text("Geçmişi sil", style: TextStyle(color: Colors.white, fontSize: 28),),
+                          )),
                         ],
-                      )),
-                ],
-              ),
-              Row(),
-            ],
-          ),
+                      ),
+                    ],
+          
+          
+          
         ),
         bottomNavigationBar: BottomBar(pageName: "settings"),
       ),

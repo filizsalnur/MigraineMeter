@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:migraine_meter/components/symptom_component.dart';
 import 'package:migraine_meter/models/model.dart';
 import 'package:migraine_meter/pages/historyPage.dart';
 import '../services/data.dart';
@@ -13,10 +14,10 @@ class NewEvent3 extends StatefulWidget {
   const NewEvent3({super.key, required this.dataModel});
 
   @override
-  State<NewEvent3> createState() => _NewEvent3State();
+  State<NewEvent3> createState() => NewEvent3State();
 }
 
-class _NewEvent3State extends State<NewEvent3> {
+class NewEvent3State extends State<NewEvent3> {
   bool squeezingPain = false;
   bool feelingOfPressure = false;
   bool painWithMovement = false;
@@ -71,6 +72,76 @@ class _NewEvent3State extends State<NewEvent3> {
     return symptoms;
   }
 
+  changeSymptom(String symptom){
+    switch (symptom) {
+      case 'Squeezing Pain':
+       print("<<<<<<<<<<<<<<<<Squeezing Pain>>>>>>>>>>>>>>>>>>>>>>>>>>");
+
+        setState(() {
+          squeezingPain = !squeezingPain;
+        });
+        print(squeezingPain);
+        break;
+      case 'Feeling of Pressure':
+        setState(() {
+          feelingOfPressure = !feelingOfPressure;
+        });
+        break;
+      case 'Pain with Movement':
+        setState(() {
+          painWithMovement = !painWithMovement;
+        });
+        break;
+      case 'Nausea':
+        setState(() {
+          nausea = !nausea;
+        });
+        break;
+      case 'Vomiting':
+        setState(() {
+          vomiting = !vomiting;
+        });
+        break;
+      case 'Sensitivity to Light':
+        setState(() {
+          sensitivityToLight = !sensitivityToLight;
+        });
+        break;
+      case 'Sensitivity to Sound':
+        setState(() {
+          sensitivityToSound = !sensitivityToSound;
+        });
+        break;
+      case 'Sensitivity to Smell':
+        setState(() {
+          sensitivityToSmell = !sensitivityToSmell;
+        });
+        break;
+      case 'Visual Disturbances':
+        setState(() {
+          visualDisturbances = !visualDisturbances;
+        });
+        break;
+      case 'Runny Nose':
+        setState(() {
+          runnyNose = !runnyNose;
+        });
+        break;
+      case 'Dizziness':
+        setState(() {
+          dizziness = !dizziness;
+        });
+        break;
+      case 'Neck Pain':
+        setState(() {
+          neckPain = !neckPain;
+        });
+        break;
+      default:
+    }
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -96,91 +167,26 @@ class _NewEvent3State extends State<NewEvent3> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Column(
-                      children: [
-                        ElevatedButton(
-                            style: ButtonStyle(
-                              shape: MaterialStateProperty.all(
-                                  RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.circular(100))),
-                              backgroundColor: MaterialStateProperty.all(
-                                  !squeezingPain
-                                      ? Colors.purple.shade900
-                                      : Colors.red),
-                            ),
-                            onPressed: () {
-                              setState(() {
-                                squeezingPain = !squeezingPain;
-                              });
-                            },
-                            child: Image(
-                              height: 80,
-                              image: AssetImage('assets/c1.png'),
-                            )),
-                        Text(
-                          "Sıkıştırıcı Ağrı",
-                          style: TextStyle(color: Colors.white),
-                        )
-                      ],
+                     SymptomComponent(
+                      value: "Sıkıştırıcı Ağrı",
+                      imagePath: 'assets/c1.png',
+                      controller: squeezingPain,
+                      onChanged: () => changeSymptom('Squeezing Pain'),
                     ),
-                    Column(
-                      children: [
-                        ElevatedButton(
-                            style: ButtonStyle(
-                              shape: MaterialStateProperty.all(
-                                  RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.circular(100))),
-                              backgroundColor: MaterialStateProperty.all(
-                                  !feelingOfPressure
-                                      ? Colors.purple.shade900
-                                      : Colors.red),
-                            ),
-                            onPressed: () {
-                              setState(() {
-                                feelingOfPressure = !feelingOfPressure;
-                              });
-                            },
-                            child: Image(
-                              height: 80,
-                              image: AssetImage('assets/c2.png'),
-                            )),
-                        Text(
-                          "Basınç Hissi",
-                          style: TextStyle(color: Colors.white),
-                        )
-                      ],
+                    SymptomComponent(
+                      value: "Basınç Hissi",
+                      imagePath: 'assets/c2.png',
+                      controller: feelingOfPressure,
+                      onChanged: () => changeSymptom('Feeling of Pressure'),
                     ),
-                    Column(
-                      children: [
-                        ElevatedButton(
-                            style: ButtonStyle(
-                              shape: MaterialStateProperty.all(
-                                  RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.circular(100))),
-                              backgroundColor: MaterialStateProperty.all(
-                                  !painWithMovement
-                                      ? Colors.purple.shade900
-                                      : Colors.red),
-                            ),
-                            onPressed: () {
-                              setState(() {
-                                painWithMovement = !painWithMovement;
-                              });
-                            },
-                            child: Image(
-                              height: 80,
-                              width: 80,
-                              image: AssetImage('assets/c3.png'),
-                            )),
-                        Text(
-                          "Hareketle Ağrı",
-                          style: TextStyle(color: Colors.white),
-                        )
-                      ],
+                    
+                    SymptomComponent(
+                      value: "Hareketle Ağrı",
+                      imagePath: 'assets/c3.png',
+                      controller: painWithMovement,
+                      onChanged: () => changeSymptom('Pain with Movement'),
                     ),
+                  
                   ],
                 ),
                 SizedBox(
@@ -189,89 +195,23 @@ class _NewEvent3State extends State<NewEvent3> {
                 Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Column(
-                        children: [
-                          ElevatedButton(
-                              style: ButtonStyle(
-                                shape: MaterialStateProperty.all(
-                                    RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(100))),
-                                backgroundColor: MaterialStateProperty.all(
-                                    !nausea
-                                        ? Colors.purple.shade900
-                                        : Colors.red),
-                              ),
-                              onPressed: () {
-                                setState(() {
-                                  nausea = !nausea;
-                                });
-                              },
-                              child: Image(
-                                height: 80,
-                                image: AssetImage('assets/c4.png'),
-                              )),
-                          Text(
-                            "Mide Bulantısı",
-                            style: TextStyle(color: Colors.white),
-                          )
-                        ],
+                      SymptomComponent(
+                        value: "Mide Bulantısı",
+                        imagePath: 'assets/c4.png',
+                        controller: nausea,
+                        onChanged: () => changeSymptom('Nausea'),
                       ),
-                      Column(
-                        children: [
-                          ElevatedButton(
-                              style: ButtonStyle(
-                                shape: MaterialStateProperty.all(
-                                    RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(100))),
-                                backgroundColor: MaterialStateProperty.all(
-                                    !vomiting
-                                        ? Colors.purple.shade900
-                                        : Colors.red),
-                              ),
-                              onPressed: () {
-                                setState(() {
-                                  vomiting = !vomiting;
-                                });
-                              },
-                              child: Image(
-                                height: 80,
-                                image: AssetImage('assets/c5.png'),
-                              )),
-                          Text(
-                            "Kusma",
-                            style: TextStyle(color: Colors.white),
-                          )
-                        ],
+                      SymptomComponent(
+                        value: "Kusma",
+                        imagePath: 'assets/c5.png',
+                        controller: vomiting,
+                        onChanged: () => changeSymptom('Vomiting'),
                       ),
-                      Column(
-                        children: [
-                          ElevatedButton(
-                              style: ButtonStyle(
-                                shape: MaterialStateProperty.all(
-                                    RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(100))),
-                                backgroundColor: MaterialStateProperty.all(
-                                    !sensitivityToLight
-                                        ? Colors.purple.shade900
-                                        : Colors.red),
-                              ),
-                              onPressed: () {
-                                setState(() {
-                                  sensitivityToLight = !sensitivityToLight;
-                                });
-                              },
-                              child: Image(
-                                height: 80,
-                                image: AssetImage('assets/c6.png'),
-                              )),
-                          Text(
-                            "Işığa Hassasiyet",
-                            style: TextStyle(color: Colors.white),
-                          )
-                        ],
+                      SymptomComponent(
+                        value: "Işığa Hassasiyet",
+                        imagePath: 'assets/c6.png',
+                        controller: sensitivityToLight,
+                        onChanged: () => changeSymptom('Sensitivity to Light'),
                       ),
                     ]),
                 SizedBox(
@@ -280,90 +220,25 @@ class _NewEvent3State extends State<NewEvent3> {
                 Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Column(
-                        children: [
-                          ElevatedButton(
-                              style: ButtonStyle(
-                                shape: MaterialStateProperty.all(
-                                    RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(100))),
-                                backgroundColor: MaterialStateProperty.all(
-                                    !sensitivityToSmell
-                                        ? Colors.purple.shade900
-                                        : Colors.red),
-                              ),
-                              onPressed: () {
-                                setState(() {
-                                  sensitivityToSmell = !sensitivityToSmell;
-                                });
-                              },
-                              child: Image(
-                                height: 80,
-                                image: AssetImage('assets/c8.png'),
-                              )),
-                          Text(
-                            "Koku Hassasiyeti",
-                            style: TextStyle(color: Colors.white),
-                          )
-                        ],
+                      SymptomComponent(
+                        value: "Koku Hassasiyeti",
+                        imagePath: 'assets/c8.png',
+                        controller: sensitivityToSmell,
+                        onChanged: () => changeSymptom('Sensitivity to Smell'),
                       ),
-                      Column(
-                        children: [
-                          ElevatedButton(
-                              style: ButtonStyle(
-                                shape: MaterialStateProperty.all(
-                                    RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(100))),
-                                backgroundColor: MaterialStateProperty.all(
-                                    !sensitivityToSound
-                                        ? Colors.purple.shade900
-                                        : Colors.red),
-                              ),
-                              onPressed: () {
-                                setState(() {
-                                  sensitivityToSound = !sensitivityToSound;
-                                });
-                              },
-                              child: Image(
-                                height: 80,
-                                image: AssetImage('assets/c7.png'),
-                              )),
-                          Text(
-                            "Sese Hassasiyet",
-                            style: TextStyle(color: Colors.white),
-                          )
-                        ],
+                      SymptomComponent(
+                        value: "Sese Hassasiyet",
+                        imagePath: 'assets/c7.png',
+                        controller: sensitivityToSound,
+                        onChanged: () => changeSymptom('Sensitivity to Sound'),
                       ),
-                      Column(
-                        children: [
-                          ElevatedButton(
-                              style: ButtonStyle(
-                                shape: MaterialStateProperty.all(
-                                    RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(100))),
-                                backgroundColor: MaterialStateProperty.all(
-                                    !visualDisturbances
-                                        ? Colors.purple.shade900
-                                        : Colors.red),
-                              ),
-                              onPressed: () {
-                                setState(() {
-                                  visualDisturbances = !visualDisturbances;
-                                });
-                              },
-                              child: Image(
-                                height: 80,
-                                image: AssetImage('assets/c9.png'),
-                              )),
-                          Text(
-                            "Görme Bozukluğu",
-                            style: TextStyle(color: Colors.white),
-                          )
-                        ],
+                      SymptomComponent(
+                        value: "Görme Bozukluğu",
+                        imagePath: 'assets/c9.png',
+                        controller: visualDisturbances,
+                        onChanged: () => changeSymptom('Visual Disturbances'),
                       ),
+                      
                     ]),
                 SizedBox(
                   height: 20,
@@ -371,90 +246,27 @@ class _NewEvent3State extends State<NewEvent3> {
                 Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Column(
-                        children: [
-                          ElevatedButton(
-                              style: ButtonStyle(
-                                shape: MaterialStateProperty.all(
-                                    RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(100))),
-                                backgroundColor: MaterialStateProperty.all(
-                                    !runnyNose
-                                        ? Colors.purple.shade900
-                                        : Colors.red),
-                              ),
-                              onPressed: () {
-                                setState(() {
-                                  runnyNose = !runnyNose;
-                                });
-                              },
-                              child: Image(
-                                height: 80,
-                                image: AssetImage('assets/c10.png'),
-                              )),
-                          Text(
-                            "Burun Akıntısı",
-                            style: TextStyle(color: Colors.white),
-                          )
-                        ],
+                      SymptomComponent(
+                        value: "Burun Akıntısı",
+                        imagePath: 'assets/c10.png',
+                        controller: runnyNose,
+                        onChanged: () => changeSymptom('Runny Nose'),
                       ),
-                      Column(
-                        children: [
-                          ElevatedButton(
-                              style: ButtonStyle(
-                                shape: MaterialStateProperty.all(
-                                    RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(100))),
-                                backgroundColor: MaterialStateProperty.all(
-                                    !dizziness
-                                        ? Colors.purple.shade900
-                                        : Colors.red),
-                              ),
-                              onPressed: () {
-                                setState(() {
-                                  dizziness = !dizziness;
-                                });
-                              },
-                              child: Image(
-                                height: 80,
-                                image: AssetImage('assets/c11.png'),
-                              )),
-                          Text(
-                            "Baş Dönmesi",
-                            style: TextStyle(color: Colors.white),
-                          )
-                        ],
+                     
+                      SymptomComponent(
+                        value: "Baş Dönmesi",
+                        imagePath: 'assets/c11.png',
+                        controller: dizziness,
+                        onChanged: () => changeSymptom('Dizziness'),
                       ),
-                      Column(
-                        children: [
-                          ElevatedButton(
-                              style: ButtonStyle(
-                                shape: MaterialStateProperty.all(
-                                    RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(100))),
-                                backgroundColor: MaterialStateProperty.all(
-                                    !neckPain
-                                        ? Colors.purple.shade900
-                                        : Colors.red),
-                              ),
-                              onPressed: () {
-                                setState(() {
-                                  neckPain = !neckPain;
-                                });
-                              },
-                              child: Image(
-                                height: 80,
-                                image: AssetImage('assets/c12.png'),
-                              )),
-                          Text(
-                            "Boyun Ağrısı",
-                            style: TextStyle(color: Colors.white),
-                          )
-                        ],
+                      
+                      SymptomComponent(
+                        value: "Boyun Ağrısı",
+                        imagePath: 'assets/c12.png',
+                        controller: neckPain,
+                        onChanged: () => changeSymptom('Neck Pain'),
                       ),
+                      
                     ]),
               ],
             ),
