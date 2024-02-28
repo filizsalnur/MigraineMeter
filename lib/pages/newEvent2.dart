@@ -108,7 +108,7 @@ class _NewEvent2State extends State<NewEvent2> {
                       },
                       child: Image(
                         height: 150,
-                        image: AssetImage('assets/b2.png'),
+                        image: AssetImage('assets/b1.png'),
                       )),
                   ElevatedButton(
                       style: ButtonStyle(
@@ -131,7 +131,7 @@ class _NewEvent2State extends State<NewEvent2> {
                       },
                       child: Image(
                         height: 150,
-                        image: AssetImage('assets/b3.png'),
+                        image: AssetImage('assets/b2.png'),
                       )),
                 ],
               ),
@@ -162,7 +162,7 @@ class _NewEvent2State extends State<NewEvent2> {
                       },
                       child: Image(
                         height: 150,
-                        image: AssetImage('assets/b4.png'),
+                        image: AssetImage('assets/b3.png'),
                       )),
                   ElevatedButton(
                       style: ButtonStyle(
@@ -185,7 +185,7 @@ class _NewEvent2State extends State<NewEvent2> {
                       },
                       child: Image(
                         height: 150,
-                        image: AssetImage('assets/b5.png'),
+                        image: AssetImage('assets/b4.png'),
                       )),
                 ],
               ),
@@ -216,7 +216,7 @@ class _NewEvent2State extends State<NewEvent2> {
                       },
                       child: Image(
                         height: 150,
-                        image: AssetImage('assets/b6.png'),
+                        image: AssetImage('assets/b5.png'),
                       )),
                   ElevatedButton(
                       style: ButtonStyle(
@@ -239,7 +239,7 @@ class _NewEvent2State extends State<NewEvent2> {
                       },
                       child: Image(
                         height: 150,
-                        image: AssetImage('assets/b11.png'),
+                        image: AssetImage('assets/b6.png'),
                       )),
                 ],
               ),
@@ -270,7 +270,7 @@ class _NewEvent2State extends State<NewEvent2> {
                       },
                       child: Image(
                         height: 150,
-                        image: AssetImage('assets/b8.png'),
+                        image: AssetImage('assets/b7.png'),
                       )),
                   ElevatedButton(
                       style: ButtonStyle(
@@ -293,7 +293,7 @@ class _NewEvent2State extends State<NewEvent2> {
                       },
                       child: Image(
                         height: 150,
-                        image: AssetImage('assets/b9.png'),
+                        image: AssetImage('assets/b8.png'),
                       )),
                 ],
               ),
@@ -324,7 +324,7 @@ class _NewEvent2State extends State<NewEvent2> {
                       },
                       child: Image(
                         height: 150,
-                        image: AssetImage('assets/b10.png'),
+                        image: AssetImage('assets/b9.png'),
                       )),
                   ElevatedButton(
                       style: ButtonStyle(
@@ -347,7 +347,7 @@ class _NewEvent2State extends State<NewEvent2> {
                       },
                       child: Image(
                         height: 150,
-                        image: AssetImage('assets/b7.png'),
+                        image: AssetImage('assets/b10.png'),
                       )),
                 ],
               ),
