@@ -4,11 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:calendar_appbar/calendar_appbar.dart';
 import 'package:migraine_meter/components/bottomAppBar.dart';
 import 'package:migraine_meter/pages/calendar_page.dart';
-
 import 'package:migraine_meter/pages/newEvent2.dart';
-
-import 'package:migraine_meter/pages/info.dart';
-
 import 'package:shared_preferences/shared_preferences.dart';
 import '../services/data.dart';
 import 'newEvent1.dart';
@@ -24,25 +20,14 @@ class MainHistory extends StatefulWidget {
 class _MainHistoryState extends State<MainHistory> {
   DateTime? selectedDate;
   Random random = Random();
-
   DataModel dataModel = DataModel();
-
-  List<String> sharedKeys = [];
-  int counter=0;
 
   @override
   void initState() {
     setState(() {
       selectedDate = DateTime.now();
     });
-     getSharedKey();
     super.initState();
-  }
-  getSharedKey() async {
-    sharedKeys=await StorageServices.loadKeys(selectedDate!.toString().substring(0, 10));
-    setState(() {
-      sharedKeys=sharedKeys;
-    });
   }
 
   @override
@@ -67,13 +52,11 @@ class _MainHistoryState extends State<MainHistory> {
       body: FutureBuilder<List<String>>(
         future:
             StorageServices.loadData(selectedDate!.toString().substring(0, 10)),
-          
         builder: (context, AsyncSnapshot<List<String>> snapshot) {
           return ListView.builder(
             itemCount: snapshot.data!.length,
             itemBuilder: (context, index) {
               List<String> dataParts = snapshot.data![index].split(',');
-
               return Container(
                 margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
                 decoration: BoxDecoration(
@@ -257,13 +240,9 @@ class _MainHistoryState extends State<MainHistory> {
                                       ),
                                     ),
                             ],
-
                           ),
-                          
-              
-                        ],
-                      ),
-                     
+                        ),
+                      ],
                     ),
                   ),
                 ),
@@ -275,7 +254,6 @@ class _MainHistoryState extends State<MainHistory> {
       bottomNavigationBar: BottomBar(pageName: "history"),
     );
   }
-
 
   String removeBracketsAndBraces(String input) {
     StringBuffer buffer = StringBuffer();
@@ -293,6 +271,4 @@ class _MainHistoryState extends State<MainHistory> {
 
     return buffer.toString();
   }
-
 }
-
