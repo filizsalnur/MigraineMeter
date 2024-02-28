@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:migraine_meter/components/symptom_component.dart';
 import 'package:migraine_meter/models/model.dart';
 import 'package:migraine_meter/pages/historyPage.dart';
+import 'package:migraine_meter/pages/welcome_user.dart';
 import '../services/data.dart';
 import '../utils/alert_utils.dart';
 import "./newEvent2.dart";
@@ -72,10 +73,10 @@ class NewEvent3State extends State<NewEvent3> {
     return symptoms;
   }
 
-  changeSymptom(String symptom){
+  changeSymptom(String symptom) {
     switch (symptom) {
       case 'Squeezing Pain':
-       print("<<<<<<<<<<<<<<<<Squeezing Pain>>>>>>>>>>>>>>>>>>>>>>>>>>");
+        print("<<<<<<<<<<<<<<<<Squeezing Pain>>>>>>>>>>>>>>>>>>>>>>>>>>");
 
         setState(() {
           squeezingPain = !squeezingPain;
@@ -139,7 +140,6 @@ class NewEvent3State extends State<NewEvent3> {
         break;
       default:
     }
-
   }
 
   @override
@@ -167,7 +167,7 @@ class NewEvent3State extends State<NewEvent3> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                     SymptomComponent(
+                    SymptomComponent(
                       value: "Sıkıştırıcı Ağrı",
                       imagePath: 'assets/c1.png',
                       controller: squeezingPain,
@@ -179,14 +179,12 @@ class NewEvent3State extends State<NewEvent3> {
                       controller: feelingOfPressure,
                       onChanged: () => changeSymptom('Feeling of Pressure'),
                     ),
-                    
                     SymptomComponent(
                       value: "Hareketle Ağrı",
                       imagePath: 'assets/c3.png',
                       controller: painWithMovement,
                       onChanged: () => changeSymptom('Pain with Movement'),
                     ),
-                  
                   ],
                 ),
                 SizedBox(
@@ -238,7 +236,6 @@ class NewEvent3State extends State<NewEvent3> {
                         controller: visualDisturbances,
                         onChanged: () => changeSymptom('Visual Disturbances'),
                       ),
-                      
                     ]),
                 SizedBox(
                   height: 20,
@@ -252,21 +249,18 @@ class NewEvent3State extends State<NewEvent3> {
                         controller: runnyNose,
                         onChanged: () => changeSymptom('Runny Nose'),
                       ),
-                     
                       SymptomComponent(
                         value: "Baş Dönmesi",
                         imagePath: 'assets/c11.png',
                         controller: dizziness,
                         onChanged: () => changeSymptom('Dizziness'),
                       ),
-                      
                       SymptomComponent(
                         value: "Boyun Ağrısı",
                         imagePath: 'assets/c12.png',
                         controller: neckPain,
                         onChanged: () => changeSymptom('Neck Pain'),
                       ),
-                      
                     ]),
               ],
             ),
@@ -287,7 +281,7 @@ class NewEvent3State extends State<NewEvent3> {
             await Future.delayed(Duration(milliseconds: 500));
 
             Navigator.push(context, MaterialPageRoute(builder: (context) {
-              return MainHistory();
+              return WelcomeUsernamePage();
             }));
             // ignore: use_build_context_synchronously
           },

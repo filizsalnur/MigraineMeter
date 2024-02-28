@@ -23,10 +23,10 @@ class _MainHistoryState extends State<MainHistory> {
   Random random = Random();
   DataModel dataModel = DataModel();
 
-  String englishToTurkish(String value){
-    switch(value){
-     case 'intensity: No Ache':
-       return 'Şiddet: Ağrı Yok';
+  String englishToTurkish(String value) {
+    switch (value) {
+      case 'intensity: No Ache':
+        return 'Şiddet: Ağrı Yok';
       case 'intensity: Low Ache':
         return 'Şiddet: Hafif Ağrı';
       case 'intensity: Medium Ache':
@@ -38,7 +38,6 @@ class _MainHistoryState extends State<MainHistory> {
       default:
         return value;
     }
-
   }
 
   @override
@@ -78,13 +77,16 @@ class _MainHistoryState extends State<MainHistory> {
               List<String> dataParts = snapshot.data![index].split(',');
               return InkWell(
                 onTap: () {
-             
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => InfoPage(info: dataParts,dateOfEvent: selectedDate.toString()),
-                    ),
-                  );
+                  if (!dataParts.contains('No data')) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => InfoPage(
+                            info: dataParts,
+                            dateOfEvent: selectedDate.toString()),
+                      ),
+                    );
+                  }
                 },
                 child: Container(
                   margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
@@ -107,12 +109,16 @@ class _MainHistoryState extends State<MainHistory> {
                                 if (!part.contains("No data")) {
                                   print('no data');
 
-                                  if (part.contains('intensity') ){
-                                
+                                  if (part.contains('intensity')) {
                                     return ListTile(
                                       title: Text(
-                                       englishToTurkish(removeBracketsAndBraces(part.trim())),
-                                        style: TextStyle(fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),
+                                        englishToTurkish(
+                                            removeBracketsAndBraces(
+                                                part.trim())),
+                                        style: TextStyle(
+                                            fontSize: 20,
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold),
                                       ),
                                     );
                                   }
@@ -205,7 +211,8 @@ class _MainHistoryState extends State<MainHistory> {
                                       Container(
                                         decoration: BoxDecoration(
                                           color: Colors.white,
-                                          borderRadius: BorderRadius.circular(10),
+                                          borderRadius:
+                                              BorderRadius.circular(10),
                                         ),
                                         child: Image.asset(
                                           'assets/b1.png',
@@ -217,7 +224,8 @@ class _MainHistoryState extends State<MainHistory> {
                                       Container(
                                         decoration: BoxDecoration(
                                           color: Colors.white,
-                                          borderRadius: BorderRadius.circular(10),
+                                          borderRadius:
+                                              BorderRadius.circular(10),
                                         ),
                                         child: Image.asset(
                                           'assets/b2.png',
@@ -227,10 +235,10 @@ class _MainHistoryState extends State<MainHistory> {
                                       )
                                     else if (part.contains('part3'))
                                       Container(
-                               
                                         decoration: BoxDecoration(
                                           color: Colors.white,
-                                          borderRadius: BorderRadius.circular(10),
+                                          borderRadius:
+                                              BorderRadius.circular(10),
                                         ),
                                         child: Image.asset(
                                           'assets/b3.png',
@@ -242,7 +250,8 @@ class _MainHistoryState extends State<MainHistory> {
                                       Container(
                                         decoration: BoxDecoration(
                                           color: Colors.white,
-                                          borderRadius: BorderRadius.circular(10),
+                                          borderRadius:
+                                              BorderRadius.circular(10),
                                         ),
                                         child: Image.asset(
                                           'assets/b4.png',
@@ -254,7 +263,8 @@ class _MainHistoryState extends State<MainHistory> {
                                       Container(
                                         decoration: BoxDecoration(
                                           color: Colors.white,
-                                          borderRadius: BorderRadius.circular(10),
+                                          borderRadius:
+                                              BorderRadius.circular(10),
                                         ),
                                         child: Image.asset(
                                           'assets/b5.png',
@@ -266,7 +276,8 @@ class _MainHistoryState extends State<MainHistory> {
                                       Container(
                                         decoration: BoxDecoration(
                                           color: Colors.white,
-                                          borderRadius: BorderRadius.circular(10),
+                                          borderRadius:
+                                              BorderRadius.circular(10),
                                         ),
                                         child: Image.asset(
                                           'assets/b6.png',
@@ -278,7 +289,8 @@ class _MainHistoryState extends State<MainHistory> {
                                       Container(
                                         decoration: BoxDecoration(
                                           color: Colors.white,
-                                          borderRadius: BorderRadius.circular(10),
+                                          borderRadius:
+                                              BorderRadius.circular(10),
                                         ),
                                         child: Image.asset(
                                           'assets/b7.png',
@@ -290,7 +302,8 @@ class _MainHistoryState extends State<MainHistory> {
                                       Container(
                                         decoration: BoxDecoration(
                                           color: Colors.white,
-                                          borderRadius: BorderRadius.circular(10),
+                                          borderRadius:
+                                              BorderRadius.circular(10),
                                         ),
                                         child: Image.asset(
                                           'assets/b8.png',
@@ -302,7 +315,8 @@ class _MainHistoryState extends State<MainHistory> {
                                       Container(
                                         decoration: BoxDecoration(
                                           color: Colors.white,
-                                          borderRadius: BorderRadius.circular(10),
+                                          borderRadius:
+                                              BorderRadius.circular(10),
                                         ),
                                         child: Image.asset(
                                           'assets/b9.png',
@@ -314,7 +328,8 @@ class _MainHistoryState extends State<MainHistory> {
                                       Container(
                                         decoration: BoxDecoration(
                                           color: Colors.white,
-                                          borderRadius: BorderRadius.circular(10),
+                                          borderRadius:
+                                              BorderRadius.circular(10),
                                         ),
                                         child: Image.asset(
                                           'assets/b10.png',
@@ -322,7 +337,6 @@ class _MainHistoryState extends State<MainHistory> {
                                           height: 100,
                                         ),
                                       )
-                                    
                               ],
                             ),
                           ),
@@ -350,13 +364,10 @@ class _MainHistoryState extends State<MainHistory> {
       } else if (input[i] == ']' || input[i] == '}') {
         inBracketOrBrace = false;
       } else if (!inBracketOrBrace) {
-  
         buffer.write(input[i]);
       }
     }
 
-
     return buffer.toString();
   }
 }
-

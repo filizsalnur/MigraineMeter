@@ -33,6 +33,34 @@ class CalendarPageState extends State<CalendarPage> {
     return "${dateTime.year}-${dateTime.month.toString().padLeft(2, '0')}-${dateTime.day.toString().padLeft(2, '0')}";
   }
 
+  String getAllData() {
+    return _allData;
+  }
+
+  String getLastDate() {
+    print('==============================');
+
+    return formatDateTr(getLastDateFromString(_allData));
+  }
+
+  DateTime? getLastDateFromString(String data) {
+    List<String> parts = data.split(RegExp(r'\s+'));
+    DateTime? lastDate;
+
+    for (String part in parts) {
+      try {
+        DateTime date = DateTime.parse(part);
+        if (lastDate == null || date.isAfter(lastDate)) {
+          lastDate = date;
+        }
+      } catch (e) {
+        // Ignore parsing errors
+      }
+    }
+
+    return lastDate;
+  }
+
   String formatDate(DateTime? date) {
     if (date == null) {
       return '';
@@ -75,6 +103,14 @@ class CalendarPageState extends State<CalendarPage> {
     String formattedDate = "${months[month]} ${day.toString()}$suffix, $year";
 
     return formattedDate;
+  }
+
+  bool findDate(String date) {
+    if (_allData.contains(date)) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   String formatDateTr(DateTime? date) {
@@ -156,7 +192,7 @@ class CalendarPageState extends State<CalendarPage> {
                       style: TextStyle(color: Colors.white, fontSize: 30),
                     ),
                     Text(
-                      formatDateTr(selectedDate),
+                      getLastDate(),
                       style: TextStyle(color: Colors.white, fontSize: 12),
                     ),
                   ],
@@ -168,6 +204,14 @@ class CalendarPageState extends State<CalendarPage> {
                 focusedDay: _focusedDay,
                 selectedDayPredicate: (day) {
                   return isSameDay(_selectedDay, day);
+                },
+                eventLoader: (day) {
+                  bool check = findDate(formatDateToString(day));
+                  if (check) {
+                    return [('event')];
+                  }
+
+                  return [];
                 },
                 onDaySelected: (selectedDay, focusedDay) {
                   setState(() {
@@ -192,6 +236,10 @@ class CalendarPageState extends State<CalendarPage> {
               ),
               ElevatedButton(
                 onPressed: () {
+                  print('objectobjectobjectobjectobjectobjectobjectobject');
+                  StorageServices().printAllSharedPreferences();
+
+                  print('objectobjectobjectobjectobjectobjectobjectobject');
                   setState(() {
                     dataModel = DataModel(
                         date: null,
