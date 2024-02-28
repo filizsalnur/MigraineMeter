@@ -6,25 +6,28 @@ import "./newEvent1.dart";
 import '../models/model.dart';
 
 class CalendarPage extends StatefulWidget {
-  const CalendarPage({super.key});
+  const CalendarPage({Key? key}) : super(key: key);
 
   @override
   State<CalendarPage> createState() => CalendarPageState();
 }
 
 class CalendarPageState extends State<CalendarPage> {
+  late String _allData;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _allData = ModalRoute.of(context)!.settings.arguments as String;
+  }
+
+  ////////////////////
   DateTime? selectedDate;
   DateTime _focusedDay = DateTime.now();
   DateTime _selectedDay = DateTime.now();
   CalendarFormat _calendarFormat = CalendarFormat.month;
 
   DataModel dataModel = DataModel();
-
-  @override
-  void initState() {
-    selectedDate = DateTime.now();
-    super.initState();
-  }
 
   String formatDateToString(DateTime dateTime) {
     return "${dateTime.year}-${dateTime.month.toString().padLeft(2, '0')}-${dateTime.day.toString().padLeft(2, '0')}";
@@ -170,6 +173,11 @@ class CalendarPageState extends State<CalendarPage> {
                   setState(() {
                     _selectedDay = selectedDay;
                     _focusedDay = focusedDay;
+                    print(
+                        '=-=-=-=-=-=-=-=-THIS IS FROM THE CALENDAR PAGE=-=-=-=-=-=-=');
+                    print(_allData);
+                    print(
+                        '=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=');
                   });
                 },
                 calendarFormat: _calendarFormat,
@@ -225,8 +233,7 @@ class CalendarPageState extends State<CalendarPage> {
             ],
           ),
         ),
-       bottomNavigationBar: BottomBar(pageName: "calendar"),
-      
+        bottomNavigationBar: BottomBar(pageName: "calendar"),
       ),
     );
   }
