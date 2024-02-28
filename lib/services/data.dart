@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:migraine_meter/models/model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+
 class StorageServices {
 
   static Future<void> saveData(String key, String dataModel) async {
@@ -34,7 +35,23 @@ class StorageServices {
 print(matchingValues);
   return matchingValues;
 }
+static Future<List<String>> loadKeys(String keyPrefix) async {
+  final prefs = await SharedPreferences.getInstance();
+  final allPrefs = prefs.getKeys();
+  List<String> matchingKeys = [];
 
+  for (String key in allPrefs) {
+    if (key.startsWith(keyPrefix)) {
+      String? value = prefs.getString(key);
+      if (value != null) {
+        matchingKeys.add(key);
+      }
+    }
+  }
+  print("///////////////////////////////////////");
+print(matchingKeys);
+  return matchingKeys;
+}
 
   static Future<void> removeData(String key) async {
     final prefs = await SharedPreferences.getInstance();
