@@ -19,7 +19,7 @@ class BottomBarState extends State<BottomBar> {
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
-        height: 80,
+        height: 90,
         color: Colors.white,
         elevation: 100,
         child: Column(
