@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:migraine_meter/pages/calendar_page.dart';
 import 'package:migraine_meter/pages/historyPage.dart';
+import 'package:migraine_meter/pages/welcome_user.dart';
 
 import '../pages/settings_page.dart';
 
@@ -16,6 +17,7 @@ class BottomBar extends StatefulWidget {
 }
 
 class BottomBarState extends State<BottomBar> {
+  
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
@@ -35,7 +37,7 @@ class BottomBarState extends State<BottomBar> {
                   if (widget.pageName != "calendar") {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => CalendarPage()),
+                      MaterialPageRoute(builder: (context) => WelcomeUsernamePage()),
                     );
                   }
                 },

@@ -28,7 +28,7 @@ class _WelcomeUsernamePageState extends State<WelcomeUsernamePage> {
     });
 
     // Simulate loading time with a delay
-    await Future.delayed(Duration(seconds: 3));
+    await Future.delayed(Duration(seconds: 0));
 
     setState(() {
       _isLoading = false;
@@ -62,7 +62,7 @@ class _WelcomeUsernamePageState extends State<WelcomeUsernamePage> {
           children: [
             if (!_isLoading)
               AnimatedOpacity(
-                duration: Duration(seconds: 1),
+                duration: Duration(seconds: 0),
                 opacity: 1.0,
                 child: Text(
                   'Welcome',
@@ -71,7 +71,7 @@ class _WelcomeUsernamePageState extends State<WelcomeUsernamePage> {
               ),
             SizedBox(height: 20),
             AnimatedOpacity(
-              duration: Duration(seconds: 1),
+              duration: Duration(seconds: 0),
               opacity: 1.0,
               child: Text(
                 'Loading...',
