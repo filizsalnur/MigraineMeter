@@ -23,6 +23,24 @@ class _MainHistoryState extends State<MainHistory> {
   Random random = Random();
   DataModel dataModel = DataModel();
 
+  String englishToTurkish(String value){
+    switch(value){
+     case 'intensity: No Ache':
+       return 'Şiddet: Ağrı Yok';
+      case 'intensity: Low Ache':
+        return 'Şiddet: Hafif Ağrı';
+      case 'intensity: Medium Ache':
+        return 'Şiddet: Orta Ağrı';
+      case 'intensity: High Ache':
+        return 'Şiddet: Yüksek Ağrı';
+      case 'intensity: Very High Ache':
+        return 'Şiddet: Çok Yüksek Ağrı';
+      default:
+        return value;
+    }
+
+  }
+
   @override
   void initState() {
     setState(() {
@@ -80,28 +98,27 @@ class _MainHistoryState extends State<MainHistory> {
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Expanded(
                             flex: 1,
                             child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: dataParts.map((part) {
                                 if (!part.contains("No data")) {
                                   print('no data');
 
-                                  if (part.contains('intensity') ||
-                                      part.contains('type')) {
+                                  if (part.contains('intensity') ){
                                     print(part);
                                     print('DATA FOUND');
                                     return ListTile(
                                       title: Text(
-                                        InfoPageState().englishToTurkish(removeBracketsAndBraces(part.trim())),
-                                        style: TextStyle(fontSize: 25),
+                                       englishToTurkish(removeBracketsAndBraces(part.trim())),
+                                        style: TextStyle(fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),
                                       ),
                                     );
                                   }
                                 }
-
                                 return SizedBox();
                               }).toList(),
                             ),
@@ -187,72 +204,127 @@ class _MainHistoryState extends State<MainHistory> {
                                     )
                                   else if (part.contains('type'))
                                     if (part.contains('part1'))
-                                      Image.asset(
-                                        'assets/b1.png',
-                                        width: 100,
-                                        height: 100,
+                                      Container(
+                                        decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius: BorderRadius.circular(10),
+                                        ),
+                                        child: Image.asset(
+                                          'assets/b1.png',
+                                          width: 100,
+                                          height: 100,
+                                        ),
                                       )
                                     else if (part.contains('part2'))
-                                      Image.asset(
-                                        'assets/b2.png',
-                                        width: 100,
-                                        height: 100,
+                                      Container(
+                                        decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius: BorderRadius.circular(10),
+                                        ),
+                                        child: Image.asset(
+                                          'assets/b2.png',
+                                          width: 100,
+                                          height: 100,
+                                        ),
                                       )
                                     else if (part.contains('part3'))
-                                      Image.asset(
-                                        'assets/b3.png',
-                                        width: 100,
-                                        height: 100,
+                                      Container(
+                               
+                                        decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius: BorderRadius.circular(10),
+                                        ),
+                                        child: Image.asset(
+                                          'assets/b3.png',
+                                          width: 100,
+                                          height: 100,
+                                        ),
                                       )
                                     else if (part.contains('part4'))
-                                      Image.asset(
-                                        'assets/b4.png',
-                                        width: 100,
-                                        height: 100,
+                                      Container(
+                                        decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius: BorderRadius.circular(10),
+                                        ),
+                                        child: Image.asset(
+                                          'assets/b4.png',
+                                          width: 100,
+                                          height: 100,
+                                        ),
                                       )
                                     else if (part.contains('part5'))
-                                      Image.asset(
-                                        'assets/b5.png',
-                                        width: 100,
-                                        height: 100,
+                                      Container(
+                                        decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius: BorderRadius.circular(10),
+                                        ),
+                                        child: Image.asset(
+                                          'assets/b5.png',
+                                          width: 100,
+                                          height: 100,
+                                        ),
                                       )
                                     else if (part.contains('part6'))
-                                      Image.asset(
-                                        'assets/b6.png',
-                                        width: 100,
-                                        height: 100,
+                                      Container(
+                                        decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius: BorderRadius.circular(10),
+                                        ),
+                                        child: Image.asset(
+                                          'assets/b6.png',
+                                          width: 100,
+                                          height: 100,
+                                        ),
                                       )
                                     else if (part.contains('part7'))
-                                      Image.asset(
-                                        'assets/b7.png',
-                                        width: 100,
-                                        height: 100,
+                                      Container(
+                                        decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius: BorderRadius.circular(10),
+                                        ),
+                                        child: Image.asset(
+                                          'assets/b7.png',
+                                          width: 100,
+                                          height: 100,
+                                        ),
                                       )
                                     else if (part.contains('part8'))
-                                      Image.asset(
-                                        'assets/b8.png',
-                                        width: 100,
-                                        height: 100,
+                                      Container(
+                                        decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius: BorderRadius.circular(10),
+                                        ),
+                                        child: Image.asset(
+                                          'assets/b8.png',
+                                          width: 100,
+                                          height: 100,
+                                        ),
                                       )
                                     else if (part.contains('part9'))
-                                      Image.asset(
-                                        'assets/b9.png',
-                                        width: 100,
-                                        height: 100,
+                                      Container(
+                                        decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius: BorderRadius.circular(10),
+                                        ),
+                                        child: Image.asset(
+                                          'assets/b9.png',
+                                          width: 100,
+                                          height: 100,
+                                        ),
                                       )
                                     else if (part.contains('part10'))
-                                      Image.asset(
-                                        'assets/b10.png',
-                                        width: 100,
-                                        height: 100,
-                                      )
-                                    else if (part.contains('symptoms'))
-                                      ListTile(
-                                        title: Text(
-                                          InfoPageState().englishToTurkish(removeBracketsAndBraces(part.trim())),
-                                          style: TextStyle(fontSize: 25),
+                                      Container(
+                                        decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius: BorderRadius.circular(10),
                                         ),
-                                      ),
+                                        child: Image.asset(
+                                          'assets/b10.png',
+                                          width: 100,
+                                          height: 100,
+                                        ),
+                                      )
+                                    
                               ],
                             ),
                           ),

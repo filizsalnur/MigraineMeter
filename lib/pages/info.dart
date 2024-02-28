@@ -118,7 +118,7 @@ _buildSymptoms('Semptomlar', symptoms),
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          englishToTurkish(title),
+          englishToTurkish(title)+":",
           style: TextStyle(
             fontSize: 22.0,
             fontWeight: FontWeight.bold,
@@ -142,7 +142,7 @@ _buildSymptoms('Semptomlar', symptoms),
       children: [
         Text(
           value,
-          style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.purple.shade900),
+          style: TextStyle(fontSize: 26.0, fontWeight: FontWeight.bold, color: Colors.purple.shade900),
         ),
         Divider(), 
         SizedBox(height: 8.0),
@@ -157,7 +157,7 @@ _buildSymptoms('Semptomlar', symptoms),
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
       Text(
-        englishToTurkish(title),
+        englishToTurkish(title)+":",
         style: TextStyle(
           fontSize: 22.0,
           fontWeight: FontWeight.bold,
@@ -169,9 +169,14 @@ _buildSymptoms('Semptomlar', symptoms),
         shrinkWrap: true,
         itemCount: value.length,
         itemBuilder: (context, index) {
-          return Text(
-            englishToTurkish(value[index]),
-            style: TextStyle(fontSize: 20.0),
+          return Row(
+            children: [
+              Icon(Icons.check, color: Colors.purple.shade900),
+              Text(
+                englishToTurkish(value[index]),
+                style: TextStyle(fontSize: 20.0),
+              ),
+            ],
           );
         },
       ),
@@ -212,7 +217,7 @@ _buildSymptoms('Semptomlar', symptoms),
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Text(
-              'Ağrının Lokasyonu',
+              'Ağrının Lokasyonu'+":",
               style: TextStyle(
                 fontSize: 22.0,
                 fontWeight: FontWeight.bold,
@@ -232,7 +237,7 @@ _buildSymptoms('Semptomlar', symptoms),
 
   List<String> convertListToMap(List<String> data) {
   Map<String, String> resultMap = {};
-  bool symptomsFound = false; // "symptoms" anahtarının bulunup bulunmadığını izlemek için bir bayrak
+  bool symptomsFound = false; 
   
   for (String item in data) {
     List<String> parts = item.split(',');
@@ -242,8 +247,7 @@ _buildSymptoms('Semptomlar', symptoms),
             .split(',')
             .map((symptom) => symptom.trim())
             .toList();
-            print("<<<<<<<<<<<<<<<<<<< SYMPTOM >>>>>>>>>>>>>>>>>>>>>");
-            print(symptomList);
+     
             symptoms.add(symptomList.toString().trim().replaceAll('[', '').replaceAll(']', '').replaceAll('}', ''));
         for (String symptom in symptomList) {
           List<String> keyValue = symptom.split(':');
@@ -255,6 +259,14 @@ _buildSymptoms('Semptomlar', symptoms),
       } else if (part.contains('symptoms')) {
  
         symptomsFound = true;
+         List<String> symptomList = part
+            .split(',')
+            .map((symptom) => symptom.trim())
+            .toList();
+           String result = symptomList[0].split("[")[1].replaceAll("]", "").trim();
+
+
+            symptoms.add(result.toString().trim().replaceAll('[', '').replaceAll(']', '').replaceAll('}', ''));
       } else {
     
         List<String> keyValue = part.split(':');
