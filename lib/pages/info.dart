@@ -226,10 +226,21 @@ _buildSymptoms('Semptomlar', symptoms),
             ),
           ],
         ),
-        Image.asset(
-          imagePath,
-          width: 300,
-          height: 300,
+        SizedBox(height: 15),
+        Container(
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: Colors.purple.shade900,
+              width: 2,
+            ),
+            borderRadius: BorderRadius.circular(20),
+          
+          ),
+          child: Image.asset(
+            imagePath,
+            width: 300,
+            height: 300,
+          ),
         ),
       ],
     );
