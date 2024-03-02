@@ -177,8 +177,7 @@ class _MainHistoryState extends State<MainHistory> {
                                                   },
                                                   style:
                                                       ElevatedButton.styleFrom(
-                                                    primary:
-                                                        Colors.purple.shade900,
+                                                    backgroundColor: Colors.purple.shade900,
                                                     shape:
                                                         RoundedRectangleBorder(
                                                       borderRadius:
