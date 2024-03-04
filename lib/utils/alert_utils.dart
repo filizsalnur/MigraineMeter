@@ -47,6 +47,29 @@ class AlertUtils {
     isDialogOpen = false;
   }
 
+  Future<bool> confirmDelete(String message, BuildContext context) async {
+    bool isConfirmed = false;
+    await QuickAlert.show(
+      context: context,
+      type: QuickAlertType.confirm,
+      title: message,
+      titleColor: Colors.black,
+      confirmBtnText: 'Yes',
+      cancelBtnText: 'No',
+      confirmBtnColor: Colors.green,
+      backgroundColor: (Colors.white),
+      onConfirmBtnTap: () async {
+        Navigator.pop(context);
+        isConfirmed = true;
+      },
+      onCancelBtnTap: () {
+        Navigator.pop(context);
+        isConfirmed = false;
+      },
+    );
+    return isConfirmed;
+  }
+
   Future<void> loadingAlert(BuildContext context) async {
     isDialogOpen = true;
     await QuickAlert.show(
