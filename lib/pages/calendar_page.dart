@@ -188,13 +188,10 @@ class CalendarPageState extends State<CalendarPage> {
                 child: Column(
                   children: [
                     Text(
-                      "Son Migreninizin Tarihi:",
+                      "Hoşgeldiniz!",
                       style: TextStyle(color: Colors.white, fontSize: 30),
                     ),
-                    Text(
-                      getLastDate(),
-                      style: TextStyle(color: Colors.white, fontSize: 12),
-                    ),
+                
                   ],
                 ),
               ),
